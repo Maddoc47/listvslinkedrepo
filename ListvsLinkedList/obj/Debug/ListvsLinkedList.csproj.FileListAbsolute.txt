@@ -1,1 +1,6 @@
 H:\Development\C#\Projects\exploring c#\ListvsLinkedList\ListvsLinkedList\bin\Debug\ListvsLinkedList.exe.config
+H:\Development\C#\Projects\exploring c#\ListvsLinkedList\ListvsLinkedList\bin\Debug\ListvsLinkedList.exe
+H:\Development\C#\Projects\exploring c#\ListvsLinkedList\ListvsLinkedList\bin\Debug\ListvsLinkedList.pdb
+H:\Development\C#\Projects\exploring c#\ListvsLinkedList\ListvsLinkedList\obj\Debug\ListvsLinkedList.csprojResolveAssemblyReference.cache
+H:\Development\C#\Projects\exploring c#\ListvsLinkedList\ListvsLinkedList\obj\Debug\ListvsLinkedList.exe
+H:\Development\C#\Projects\exploring c#\ListvsLinkedList\ListvsLinkedList\obj\Debug\ListvsLinkedList.pdb
