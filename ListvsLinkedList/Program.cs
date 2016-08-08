@@ -16,56 +16,59 @@ namespace ListvsLinkedList
     class Program
     {
         static void Main(string[] args)
-        {           
-            timeFunc(RunLinked);                   //Run the timer method with the delegate object as a parameter           
-            timeFunc(RunList);                     //Run the timer method with the delegate object as a parameter
+        {                                                     
+            timeFunc(RunLinked);                 
+            timeFunc(RunList);
+            
+            //timeFunc<int>(RunList);                 
 
-            timeFunc<int>(RunList);                 //This compiles, BUT: can't access the int range parameter in the timeFunc<T> method below
             Console.ReadLine();                      
         }
 
+        
+        //Times void functions with 0 parameters
+        static void timeFunc(Action funcToTime)
+        {
+            //Uses the custom delegate
+            Console.WriteLine("Start Timer: ");
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
+            funcToTime();                               //CAN'T ACCESS THE INT RANGE FROM THE METHOD STORED IN funcToTime
+            timer.Stop();
+            Console.WriteLine("\nThe function finished after: {0} ms.\n", timer.ElapsedMilliseconds);
+        }
+
+        //Times void functions with 1 int parameter (Overload repeat for other types)
         static void timeFunc(Action<int> funcToTime)
-        {
-            //Uses the built-in Action delegate that that takes 1 parameter and has void return
+        {                        
+            //Uses the custom delegate
             Console.WriteLine("Start Timer: ");
             Stopwatch timer = new Stopwatch();
             timer.Start();
-            funcToTime(8000);
+            funcToTime(2000);                               //CAN'T ACCESS THE INT RANGE FROM THE METHOD STORED IN funcToTime
             timer.Stop();
             Console.WriteLine("\nThe function finished after: {0} ms.\n", timer.ElapsedMilliseconds);
-            timer.Reset();
         }
 
-        static void timeFunc(dlgFuncTimeGeneric<double> funcToTime)
+        /*
+        //Times void functions with 1 parameter
+        static void timeFunc<T>(Action<T> funcToTime)
         {
             //Uses the custom delegate
             Console.WriteLine("Start Timer: ");
             Stopwatch timer = new Stopwatch();
             timer.Start();
-            funcToTime(8000);
+            funcToTime(2000);                               //CAN'T ACCESS THE INT RANGE FROM THE METHOD STORED IN funcToTime
             timer.Stop();
             Console.WriteLine("\nThe function finished after: {0} ms.\n", timer.ElapsedMilliseconds);
         }
-
-        static void timeFunc<T>(dlgFuncTimeGeneric<T> funcToTime)
-        {
-            //Uses the custom delegate
-            Console.WriteLine("Start Timer: ");
-            Stopwatch timer = new Stopwatch();
-            timer.Start();            
-            funcToTime(8000);                               //CAN'T ACCESS THE INT RANGE FROM THE METHOD STORED IN funcToTime
-            timer.Stop();
-            Console.WriteLine("\nThe function finished after: {0} ms.\n", timer.ElapsedMilliseconds);
-        }
-
-
-
-
-        static void RunLinked(int range)
+        */
+        
+        static void RunLinked()
         {
             //Create a LinkedList with 1M class entries
             LinkedList<Number> numberLinkedList = new LinkedList<Number>();
-            for (int i = 0; i < range; i++)
+            for (int i = 0; i < 5000; i++)
             {
                 numberLinkedList.AddLast(new Number(i));
             }
@@ -74,7 +77,6 @@ namespace ListvsLinkedList
                 Console.Write(numero.Nr + " ");
             }
         }
-
         static void RunList(int range)
         {
             List<Number> numberList = new List<Number>();
